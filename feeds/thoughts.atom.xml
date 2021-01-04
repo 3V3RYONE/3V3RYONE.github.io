@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>INSIGHT - THOUGHTS</title><link href="https://3v3ryone.github.io/" rel="alternate"></link><link href="https://3v3ryone.github.io/feeds/thoughts.atom.xml" rel="self"></link><id>https://3v3ryone.github.io/</id><updated>2020-12-22T00:00:00+05:30</updated><subtitle>Blog</subtitle><entry><title>Schrödinger's cat</title><link href="https://3v3ryone.github.io/schrodingers-cat.html" rel="alternate"></link><published>2020-12-22T00:00:00+05:30</published><updated>2020-12-22T00:00:00+05:30</updated><author><name>Beleswar</name></author><id>tag:3v3ryone.github.io,2020-12-22:/schrodingers-cat.html</id><summary type="html">&lt;p&gt;Defining the Schrödinger's cat paradox&lt;/p&gt;</summary><content type="html">&lt;h3&gt;What is a paradox?&lt;/h3&gt;
+&lt;p&gt;A paradox is like a snake eating its own tail. You don't know how or where the thing starts or ends. Consider this,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You are 20 years old. You met with an old man today. After few days,you realised that man is the older form of you(from 2080).
+So how do you define this? Is it you meeting with your older form today or is it you living 80 years then meeting your younger form?
+Where did it start?  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Confused? It's normal.I would recommend watching the movie &lt;a href="https://www.google.com/search?q=predestination&amp;amp;oq=predestination+++&amp;amp;aqs=chrome..69i57j0i20i131i263i433i457j46i433j0j0i433j0l2j0i131i433.3204j0j7&amp;amp;sourceid=chrome&amp;amp;ie=UTF-8"&gt;predestination&lt;/a&gt;. Its worth the time!&lt;/p&gt;
+&lt;h3&gt;Schrödinger's cat&lt;/h3&gt;
+&lt;p&gt;It came as a thought of Erwin Schrödinger while discussing with Albert Einstein about Quantum mechanics.&lt;br&gt;
+Consider a setup where you put a cat, a flask containing hydrocyanic acid(poisonous), a hammer and a radioactive sample in a &lt;strong&gt;sealed&lt;/strong&gt; box for one hour.  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="setup" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Schrodingers_cat.svg/640px-Schrodingers_cat.svg.png"&gt;  &lt;/p&gt;
+&lt;p&gt;The amount of radioactive substance is so less that within an hour, there is &lt;strong&gt;equal probability&lt;/strong&gt; that only one atom decays or none of the atoms decays.&lt;br&gt;
+If that one atom decays, it releases the hammer that breaks the flask of poison. The cat inhales the poison and dies.If no atom decays, the cat is still alive.  &lt;/p&gt;
+&lt;p&gt;Now, Quantum physics states that both the situations are happening simultaneously, that is, the cat is both dead and alive, &lt;strong&gt;in multiple realities&lt;/strong&gt;.&lt;br&gt;
+In one reality, the cat is lying dead and in the other, the cat is alive.This is called &lt;strong&gt;Quantum superposition&lt;/strong&gt; just like wave superposition.  &lt;/p&gt;
+&lt;p&gt;The system stops being a superposition of realities only when an &lt;strong&gt;observation&lt;/strong&gt; is made. That is, only when the box is opened after an hour, the two realities collapse into one of the reality and we see either a dead cat or an alive cat.This establishes the so called &lt;em&gt;&lt;strong&gt;parallel universe&lt;/strong&gt;&lt;/em&gt;. That is, when the box is not yet opened,if in one universe the cat is alive, in the parallel universe the cat is dead and vice versa.  &lt;/p&gt;
+&lt;p&gt;However, Classical mechanics says whether or not the observation is made, there is only one possibility. Either the cat is dead or its alive.  &lt;/p&gt;
+&lt;p&gt;Take a moment and realise the beauty of this! :)&lt;/p&gt;</content><category term="THOUGHTS"></category><category term="Quantum mechanics"></category><category term="parallel universe"></category></entry></feed>
