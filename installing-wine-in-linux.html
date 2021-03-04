@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
-        <meta charset="utf-8">
+            <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-        <title>INSIGHT - Authors</title>
+        <title>Installing WINE in Linux</title>
 
             <link href="https://3v3ryone.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Full Atom Feed" />
+            <link href="https://3v3ryone.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Categories Atom Feed" />
         <!-- Bootstrap Core CSS -->
         <link href="https://3v3ryone.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,10 +33,29 @@
             <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-                <meta property="og:locale" content="">
+
+
+        <meta name="description" content="Installing WINE and successively LTspice in Linux">
+
+        <meta name="author" content="Beleswar">
+
+        <meta name="tags" content="LTspice">
+        <meta name="tags" content="Wine">
+
+	                <meta property="og:locale" content="">
 		<meta property="og:site_name" content="INSIGHT">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="https://3v3ryone.github.io/author/beleswar.html">
+	<meta property="og:url" content="https://3v3ryone.github.io/installing-wine-in-linux.html">
+	<meta property="og:title" content="Installing WINE in Linux">
+	<meta property="article:published_time" content="2021-03-05 00:00:00+05:30">
+            <meta property="og:description" content="Installing WINE and successively LTspice in Linux">
+
+            <meta property="og:image" content="https://3v3ryone.github.io/theme/images/post-bg.jpg">
 </head>
 
+<body class="article-installing-wine-in-linux">
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -56,7 +76,7 @@
                 <ul class="nav navbar-nav navbar-right">
 
                             <li><a href="https://3v3ryone.github.io/pages/about.html">About</a></li>
-                                <li><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
+                                <li class="active"><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
                                 <li><a href="https://3v3ryone.github.io/category/thoughts.html">THOUGHTS</a></li>
                 </ul>
             </div>
@@ -71,7 +91,12 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Articles by </h1>
+                        <h1>Installing WINE in Linux</h1>
+                        <span class="meta">Posted by
+                                <a href="https://3v3ryone.github.io/author/beleswar.html">Beleswar</a>
+                             on Fri 05 March 2021
+                        </span>
+                        
                     </div>
                 </div>
             </div>
@@ -82,14 +107,42 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="post-preview">
-            <a href="https://3v3ryone.github.io/author/beleswar.html" rel="bookmark">
-                <h2 class="post-title">
-                    Beleswar (3)
-                </h2>
-            </a>
+    <!-- Post Content -->
+    <article>
+        <p><strong>Wine</strong> is a package that lets you run Windows applications in Linux. So you can use it to run various Windows-only programs in Linux! You can follow the below method to install wine (Arch/Debian) and skip the third step if you dont need LTspice.  </p>
+<p>So the other day, our teacher asked us to install LTspice in our systems. LTspice is an open source software used to build circuits and study their outputs. First of all, LTspice was only available for Windows and Mac and there were no official links for even the debian distro. :\ I am on Arch and I was lucky enough to find the AUR for LTspice but simply installing it didn't work. It really gave messy outputs regarding from where do you want to install <strong><em>wine</em></strong> and a thousand more stuffs.  </p>
+<p>And after coming to Linux, there was no way I would go to Windows just for LTspice. So after an intensive search, I got to know that it was actually <strong>WINE</strong> which did all the work. <strong>Wine is a package that enables your computer to run Windows applications</strong>. So the idea was to <strong>use Wine to run LTspice's windows version in Linux</strong>. And installing wine was what was the root of the entire problem (A simple <strong><em>sudo pacman -S wine</em> wont</strong> give you the result). Basically for wine, you need to enable to use 32 bit libraries in your 64 bit processor. So we go in this way:  </p>
+<p><strong>Enable 32 bit libraries -&gt; Install wine -&gt; Install LTspice</strong>  </p>
+<p>For Ubuntu users, I have attached a link for this entire process from a blog. <a href="https://www.pcsuggest.com/install-ltspice-linux/">Link to follow-Ubuntu</a><br>
+Arch users may continue below.  </p>
+<h2>Enable 32 bit libraries</h2>
+<p>So the <strong>multilib</strong> repository is generally used to run 32-bit applications on a 64-bit system. To enable it, go to terminal and type<br>
+<strong><em>sudo vim /etc/pacman.conf</em></strong> (if you use nano, do <strong><em>nano /etc/pacman.conf</em></strong> )<br>
+Go to the <strong>multilib</strong> section and uncomment the lines 92 and 93 (multilib and Include = ...) and then save the file and exit. In vim, type <strong><em>Esc -&gt; :wq! -&gt; Enter</em></strong> to save and exit. In nano, do <strong><em>Ctrl + O then Ctrl + X</em></strong> to save and exit.<br>
+<img alt="image" src="https://drive.google.com/uc?export=view&amp;id=1SL_0Li4Y6zlCQ_7Af6X47XX1rVbyt4VE">  </p>
+<p>Now, this enables our multilib package. Let's download the database files for <em>multilib</em> by<br>
+<strong><em>sudo pacman -Sy</em></strong>  </p>
+<p>And, we are done with this section!  </p>
+<h2>Installing WINE</h2>
+<p>The rest of things is pretty simple.<br>
+For Arch guys, We just do<br>
+<strong><em>sudo pacman -S wine</em></strong><br>
+to install wine.  </p>
+<p>And done!  </p>
+<h2>Installing LTspice</h2>
+<p>Use your AUR installer to download the ltspice package. I am using yay, so it is<br>
+<strong><em>yay -S ltspice</em></strong><br>
+This is going to take some time. So sit back and enter your sudo password if asked during the installation.<br>
+Then you can open LTspice, and if it asks to install wine-mono, you can do it there itself on the window! (Windows vibes:-)) else no worries.  </p>
+<p>And finally done!! Phew, :)</p>
+    </article>
+
+        <div class="tags">
+            <p>tags: <a href="https://3v3ryone.github.io/tag/ltspice.html">LTspice</a>, <a href="https://3v3ryone.github.io/tag/wine.html">Wine</a></p>
         </div>
-        <hr>
+
+    <hr>
+
             </div>
         </div>
     </div>
