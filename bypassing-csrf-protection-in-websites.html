@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+          <title>INSIGHT - Bypassing CSRF Protection in websites</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://3v3ryone.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Full Atom Feed" />
+        <link href="https://3v3ryone.github.io/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Categories Atom Feed" />
+
+
+
+
+    <meta name="tags" content="CSRF Tokens" />
+    <meta name="tags" content="Bruteforce Login" />
+    <meta name="tags" content="Extract CSRF Token" />
+    <meta name="tags" content="Bypass Login pages" />
+
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://3v3ryone.github.io/">INSIGHT <strong>Blog</strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://3v3ryone.github.io/pages/about.html">About</a></li>
+            <li class="active"><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
+            <li><a href="https://3v3ryone.github.io/category/thoughts.html">THOUGHTS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://3v3ryone.github.io/bypassing-csrf-protection-in-websites.html" rel="bookmark"
+         title="Permalink to Bypassing CSRF Protection in websites">Bypassing CSRF Protection in websites</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2022-01-24T00:00:00+05:30">
+      Mon 24 January 2022
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://3v3ryone.github.io/author/beleswar.html">Beleswar</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://3v3ryone.github.io/category/tech.html">TECH</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="https://3v3ryone.github.io/tag/csrf-tokens.html">CSRF Tokens</a>
+            <a href="https://3v3ryone.github.io/tag/bruteforce-login.html">Bruteforce Login</a>
+            <a href="https://3v3ryone.github.io/tag/extract-csrf-token.html">Extract CSRF Token</a>
+            <a href="https://3v3ryone.github.io/tag/bypass-login-pages.html">Bypass Login pages</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Hello Everyone! Hope you are doing fine during these insane days.. Ah, Chuck it, we all know nobody is fine, everybody just accepts! But I hope this makes your day somewhat easier :)  </p>
+<p>So, today's post would cover topics to get you started about <strong>CSRF protections</strong> and a <strong>solid method regarding how you can bypass them!</strong> So, what is CSRF protection? Where do I see it? What purpose does that serve? Let's dive right in!  </p>
+<h2>What is CSRF?</h2>
+<p>CSRF stands for Cross Site Request Forgery. It is basically an attack, where the hacker does malicious actions on a website, by means of an authenticated user that the website trusts. Simply put, it is a malicious request (lets say to change the user's password) made by a hacker in a website, that he doesn't have access to, but through a user which has access to it.  </p>
+<h2>How do Hackers use CSRF?</h2>
+<p>Some common CSRF attack actions are like, your email/password getting changed, or transferring more money to a different bank account or posting random stuffs in your social media feed etc. The hacker sends a forged malicious request on behalf of the authenticated user, and the website does not know that where is the request appearing from. Therefore, it grants the request which results in an unwanted action on the database (like password getting changed).  </p>
+<p>A legit user login request can be seen as:  </p>
+<p><code>username=admin&amp;password=password&amp;Login=Login&amp;user_token=004fc0b9ee58345cfeeb5198b782bc63</code>  </p>
+<p>Whereas a request made by an unauthorized hacker would look like:  </p>
+<p><code>username=admin&amp;password=password&amp;Login=Login</code>  </p>
+<h2>How does CSRF Protection works?</h2>
+<p>So websites and webapps don't want to you to perform a CSRF attack on them right. That is why they have something called as a <code>authentication_token</code> or <code>user_token</code> or <code>csrf_token</code> to protect against the CSRF attacks. Let's consider a scenario to see how these CSRF tokens work and their importance.  </p>
+<p>So, lets say <strong>Andrew</strong> is logged into his facebook account. He is using Chrome browser to log into facebook, and let's say his username is <code>andrew</code> and his password is <code>private_andrew</code>. Our hacker, <strong>Martin</strong> is taking a close look onto <strong>Andrew's</strong> life and wanting to hack into his facebook. So, lets say he generates a long file <code>possible_credentials.txt</code>, containing a list of his possible credentials like, <code>andrew:andrew</code>, <code>andrew:Passw0rd!</code>, <code>andrew:private</code> and so on.. These files can be easily generated through applications like <strong>crunch</strong>. So there is a good possibility that he generates <code>andrew:private_andrew</code> option in his file too. Now <strong>Martin</strong> tries to bruteforce these credentials in facebook login page, so that he finds the correct login credentials of <strong>Andrew</strong>. He opens up an application like Metasploit, and sets the target as <code>facebook.com/login</code> and USERPASS-FILE as <code>possible_credentials.txt</code>.  </p>
+<p>And Metasploit tries to login to facebook with every combination of the credentials (maybe in 1000s) in the file. At one point, <strong>it may show success in the <code>andrew:private_andrew</code> credential!</strong> So, what do you think? Is it all a long credential file that takes to hack people's accounts? <strong>Nope, this is where the CSRF protection comes to play</strong>. <strong><strong>The facebook server does not listen to any login requests made by users, that do not have the correct <code>authentication_token</code>!</strong></strong> This <code>authentication_token</code> is a long hash value (generally 32 characters long) that is generated by the server everytime the <code>facebook/login</code> page loads. So, no two authentication tokens are same at any point of time! And hence, only if this unique 32 character long token is sent everytime with the login credentials, then only the server responds to the request!  </p>
+<p>So, obviously we can not track the unique authentication token 1000 times (everytime a new credential test is done) and pass it with the credentials to the server. <strong><strong>Hence, the facebook server won't even listen to the requests made by metasploit, even if it contains the correct credentials!</strong></strong> So everytime we open the <code>facebook/login</code> page in our browser, we get an authentication token attached to our request, and that token is only valid for requests made by the browser in that particular session! Even if you reload the page, the token changes! <strong>So this is how the CSRF Protection works and prevents any unauthorized requests made to the server!</strong>  </p>
+<h2>Bypassing CSRF Protection</h2>
+<p>Now comes the main question, for my cybersecurity mates! And this may be the reason you have visited this blog. <strong>Can we bypass this CSRF Protection??</strong> The answer is <strong>yes, we can!</strong>. Protection exists doesn't mean its perfect! However, note that almost many real time servers like facebook or chrome, will block your IP if you make more than a particular number of requests to their page. So better watchout your bruteforce attempts there -.-  </p>
+<p>For this example, I am going to consider <strong>bypassing the DVWA Login Page</strong>. DVWA stands for Damn Vulnerable Web Application, &amp; it might be the right platform for you to apply your skills legally xD. Setting up DVWA is easy and can be found <a href="https://www.golinuxcloud.com/install-dvwa-kali-linux/">here</a>. After configuring it to your localhost, your <code>127.0.0.1/DVWA/</code> should look like this in a browser page.  </p>
+<p><img alt="dvwa-login-page" src="https://drive.google.com/uc?export=view&amp;id=1kRXKoZkjv0vq2gI8OfgeybxWaFJoti77"><br>
+So, our aim is to bypass this login form and find the correct credentials for this page. Lets start by intercepting our request. You may use Burpsuite in your browser to capture the request everytime your page loads. So, Enter anything for username and password and press Login. The corresponding request in Burpsuite should look like this :  </p>
+<div class="highlight"><pre><span></span><code><span class="nf">POST</span> <span class="nn">/login.php</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="o">:</span> <span class="l">127.0.0.1</span>
+<span class="na">User-Agent</span><span class="o">:</span> <span class="l">Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0</span>
+<span class="na">Accept</span><span class="o">:</span> <span class="l">text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8</span>
+<span class="na">Accept-Language</span><span class="o">:</span> <span class="l">en-US,en;q=0.5</span>
+<span class="na">Accept-Encoding</span><span class="o">:</span> <span class="l">gzip, deflate</span>
+<span class="na">Referer</span><span class="o">:</span> <span class="l">http://127.0.0.1/login.php</span>
+<span class="na">Content-Type</span><span class="o">:</span> <span class="l">application/x-www-form-urlencoded</span>
+<span class="na">Content-Length</span><span class="o">:</span> <span class="l">88</span>
+<span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+<span class="na">Cookie</span><span class="o">:</span> <span class="l">PHPSESSID=kmi2onkumadvnfor3bf5hspa4p; security=impossible</span>
+<span class="na">Upgrade-Insecure-Requests</span><span class="o">:</span> <span class="l">1</span>
+
+username=admin&amp;password=password&amp;Login=Login&amp;user_token=004fc0b9ee58345cfeeb5198b782bc63
+</code></pre></div>
+
+<p>Let's analyze this request. We see that the request is of <code>POST</code> method. The cookie from the browser is <code>PHPSESSID</code> value. And finally the <code>POST Data</code> which is  </p>
+<p><code>username=admin&amp;password=password&amp;Login=Login&amp;user_token=004fc0b9ee58345cfeeb5198b782bc63</code>.  </p>
+<p>Notice the <code>user_token</code> value here? This shows that the site is CSRF protected and this is exactly the CSRF token we are looking for. The username and password can be obtained from the long list of credentials <code>possible_credentials.txt</code> and the Login value is constant. So, all we need is this <code>user_token</code> to get done. The value of <code>user_token</code> would be generated unique everytime a credential request is made, so how to extract it?  </p>
+<p>One method, and the most successful method, is to first send a <code>GET</code> request to <code>127.0.0.1/DVWA/login.php</code>. In the response of the request, we will get the whole page of <code>/login.php</code> including all values of currently set variables. <strong>Bingo, here we will get our CSRF token.</strong> The response of your <code>GET</code> request would contain a part like this :  </p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">&quot;login.php&quot;</span> <span class="na">method=</span><span class="s">&quot;post&quot;</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;fieldset&gt;</span>
+
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;user&quot;</span><span class="nt">&gt;</span>Username<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">class=</span><span class="s">&quot;loginInput&quot;</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">name=</span><span class="s">&quot;username&quot;</span><span class="nt">&gt;&lt;br</span> <span class="nt">/&gt;</span>
+
+
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;pass&quot;</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;password&quot;</span> <span class="na">class=</span><span class="s">&quot;loginInput&quot;</span> <span class="na">AUTOCOMPLETE=</span><span class="s">&quot;off&quot;</span> <span class="na">size=</span><span class="s">&quot;20&quot;</span> <span class="na">name=</span><span class="s">&quot;password&quot;</span><span class="nt">&gt;&lt;br</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+
+            <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">&quot;submit&quot;</span><span class="nt">&gt;&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Login&quot;</span> <span class="na">name=</span><span class="s">&quot;Login&quot;</span><span class="nt">&gt;&lt;/p&gt;</span>
+
+    <span class="nt">&lt;/fieldset&gt;</span>
+
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&#39;hidden&#39;</span> <span class="na">name=</span><span class="s">&#39;user_token&#39;</span> <span class="na">value=</span><span class="s">&#39;306cb6206e79284a10099f3acd384f8c&#39;</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;/form&gt;</span>
+</code></pre></div>
+
+<p>Here, we can apply a quick regex search to find our CSRF token. These tokens are generally of 32 characters length. So we can apply this regex : <code>/\w{32}/</code> to extract this token easily and store it in a variable. Boom, then we send this variable's value as <code>user_token</code> along with <code>username</code> and <code>password</code> from the crunch file, as a <code>POST</code> method to <code>127.0.0.1/DVWA/login.php</code> and yes! <strong>WE HAVE BYPASSED the CSRF PROTECTION!</strong>  </p>
+<p>Note, the length of these tokens can vary from page to page. In that case, you can count the length of the <code>user_token</code> from the initial request obtained in burpsuite and accordingly change your regex search. For example, to extract CSRF tokens of 16 character length, you can apply this regex search : <code>/\w{16}/</code>. Apart from this, there are other methods as well to bypass CSRF protection, but I personally didn't find them successful. But I'd leave the link <a href="https://shahmeeramir.com/methods-to-bypass-csrf-protection-on-a-web-application-3198093f6599">here</a> incase that helps you!  </p>
+<p>Hence, our total method to bypass CSRF protections can be boiled down to this:  </p>
+<blockquote>
+<ol>
+<li>Use a <code>GET</code> request to the <code>/login</code> page to obtain the response headers.</li>
+<li>Extract the CSRF token using a regex search.</li>
+<li>Use a <code>POST</code> request to the <code>/login</code> page, passing the username, password, loginbtn and the CSRF token obtained above.</li>
+<li>Repeat this process using a bruteforcer, for every credentials, until you get the correct credential!<br>
+Note: You just have to write the <code>GET</code> and <code>POST</code> requests once, the bruteforcer will execute steps 1, 2 and 3 sequentially for every credential and report you the correct one!  </li>
+</ol>
+</blockquote>
+<p>So, I hope this article helped you in some way and made your day easier! I have finished writing the module to bypass this <code>dvwa_login</code> page and I'll link the codes here soon for you to take a reference of how things work exactly! Until next time, take care :)</p>
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>

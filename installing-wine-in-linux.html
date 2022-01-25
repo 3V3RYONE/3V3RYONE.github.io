@@ -1,115 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-            <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-        <title>Installing WINE in Linux</title>
-
-            <link href="https://3v3ryone.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Full Atom Feed" />
-            <link href="https://3v3ryone.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Categories Atom Feed" />
-        <!-- Bootstrap Core CSS -->
-        <link href="https://3v3ryone.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
-
-        <!-- Custom CSS -->
-        <link href="https://3v3ryone.github.io/theme/css/clean-blog.min.css" rel="stylesheet">
-
-        <!-- Code highlight color scheme -->
-            <link href="https://3v3ryone.github.io/theme/css/code_blocks/github.css" rel="stylesheet">
-
-
-        <!-- Custom Fonts -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+          <title>INSIGHT - Installing WINE in Linux</title>
+        <meta charset="utf-8" />
+        <meta name="generator" content="Pelican" />
+        <link href="https://3v3ryone.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Full Atom Feed" />
+        <link href="https://3v3ryone.github.io/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Categories Atom Feed" />
 
 
 
-        <meta name="description" content="Installing WINE and successively LTspice in Linux">
 
-        <meta name="author" content="Beleswar">
+    <meta name="tags" content="LTspice" />
+    <meta name="tags" content="Wine" />
 
-        <meta name="tags" content="LTspice">
-        <meta name="tags" content="Wine">
-
-	                <meta property="og:locale" content="">
-		<meta property="og:site_name" content="INSIGHT">
-
-	<meta property="og:type" content="article">
-            <meta property="article:author" content="https://3v3ryone.github.io/author/beleswar.html">
-	<meta property="og:url" content="https://3v3ryone.github.io/installing-wine-in-linux.html">
-	<meta property="og:title" content="Installing WINE in Linux">
-	<meta property="article:published_time" content="2021-03-05 00:00:00+05:30">
-            <meta property="og:description" content="Installing WINE and successively LTspice in Linux">
-
-            <meta property="og:image" content="https://3v3ryone.github.io/theme/images/post-bg.jpg">
 </head>
 
-<body class="article-installing-wine-in-linux">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://3v3ryone.github.io/">INSIGHT</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-
-                            <li><a href="https://3v3ryone.github.io/pages/about.html">About</a></li>
-                                <li class="active"><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
-                                <li><a href="https://3v3ryone.github.io/category/thoughts.html">THOUGHTS</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <!-- Page Header -->
-        <header class="intro-header" style="background-color: black">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="post-heading">
-                        <h1>Installing WINE in Linux</h1>
-                        <span class="meta">Posted by
-                                <a href="https://3v3ryone.github.io/author/beleswar.html">Beleswar</a>
-                             on Fri 05 March 2021
-                        </span>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-    <!-- Post Content -->
-    <article>
-        <p><strong>Wine</strong> is a package that lets you run Windows applications in Linux. So you can use it to run various Windows-only programs in Linux! You can follow the below method to install wine (Arch/Debian) and skip the third step if you dont need LTspice.  </p>
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://3v3ryone.github.io/">INSIGHT <strong>Blog</strong></a></h1>
+        </header><!-- /#banner -->
+        <nav id="menu"><ul>
+            <li><a href="https://3v3ryone.github.io/pages/about.html">About</a></li>
+            <li class="active"><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
+            <li><a href="https://3v3ryone.github.io/category/thoughts.html">THOUGHTS</a></li>
+        </ul></nav><!-- /#menu -->
+<section id="content" class="body">
+  <header>
+    <h2 class="entry-title">
+      <a href="https://3v3ryone.github.io/installing-wine-in-linux.html" rel="bookmark"
+         title="Permalink to Installing WINE in Linux">Installing WINE in Linux</a></h2>
+ 
+  </header>
+  <footer class="post-info">
+    <time class="published" datetime="2021-03-05T00:00:00+05:30">
+      Fri 05 March 2021
+    </time>
+    <address class="vcard author">
+      By           <a class="url fn" href="https://3v3ryone.github.io/author/beleswar.html">Beleswar</a>
+    </address>
+    <div class="category">
+        Category: <a href="https://3v3ryone.github.io/category/tech.html">TECH</a>
+    </div>
+    <div class="tags">
+        Tags:
+            <a href="https://3v3ryone.github.io/tag/ltspice.html">LTspice</a>
+            <a href="https://3v3ryone.github.io/tag/wine.html">Wine</a>
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p><strong>Wine</strong> is a package that lets you run Windows applications in Linux. So you can use it to run various Windows-only programs in Linux! You can follow the below method to install wine (Arch/Debian) and skip the third step if you dont need LTspice.  </p>
 <p>So the other day, our teacher asked us to install LTspice in our systems. LTspice is an open source software used to build circuits and study their outputs. First of all, LTspice was only available for Windows and Mac and there were no official links for even the debian distro. :\ I am on Arch and I was lucky enough to find the AUR for LTspice but simply installing it didn't work. It really gave messy outputs regarding from where do you want to install <strong><em>wine</em></strong> and a thousand more stuffs.  </p>
 <p>And after coming to Linux, there was no way I would go to Windows just for LTspice. So after an intensive search, I got to know that it was actually <strong>WINE</strong> which did all the work. <strong>Wine is a package that enables your computer to run Windows applications</strong>. So the idea was to <strong>use Wine to run LTspice's windows version in Linux</strong>. And installing wine was what was the root of the entire problem (A simple <strong><em>sudo pacman -S wine</em> wont</strong> give you the result). Basically for wine, you need to enable to use 32 bit libraries in your 64 bit processor. So we go in this way:  </p>
 <p><strong>Enable 32 bit libraries -&gt; Install wine -&gt; Install LTspice</strong>  </p>
@@ -135,68 +74,13 @@ to install wine.  </p>
 This is going to take some time. So sit back and enter your sudo password if asked during the installation.<br>
 Then you can open LTspice, and if it asks to install wine-mono, you can do it there itself on the window! (Windows vibes:-)) else no worries.  </p>
 <p>And finally done!! Phew, :)</p>
-    </article>
-
-        <div class="tags">
-            <p>tags: <a href="https://3v3ryone.github.io/tag/ltspice.html">LTspice</a>, <a href="https://3v3ryone.github.io/tag/wine.html">Wine</a></p>
-        </div>
-
-    <hr>
-
-            </div>
-        </div>
-    </div>
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <ul class="list-inline text-center">
-                            <li>
-                                <a href="https://www.github.com/3V3RYONE">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/beleswar-prasad-padhi-2416241bb/">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="mailto:beleswarprasad@gmail.com">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                    </ul>
-<p class="copyright text-muted">
-    Blog powered by <a href="http://getpelican.com">Pelican</a>,
-    which takes great advantage of <a href="http://python.org">Python</a>. <br />        &copy;  Beleswar
-</p>                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- jQuery -->
-    <script src="https://3v3ryone.github.io/theme/js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="https://3v3ryone.github.io/theme/js/bootstrap.min.js"></script>
-
-        <!-- Custom Theme JavaScript -->
-        <script src="https://3v3ryone.github.io/theme/js/clean-blog.min.js"></script>
-
+  </div><!-- /.entry-content -->
+</section>
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
+                which takes great advantage of <a href="https://www.python.org/">Python</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
 </body>
-
 </html>
