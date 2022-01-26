@@ -18,7 +18,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-THEME = "theme/pelican-clean-blog"
+THEME = "theme/"
 HEADER_COLOR = "black"
 COLOR_SCHEME_CSS = "github.css"
 SOCIAL = (('github','https://www.github.com/3V3RYONE'),('linkedin','https://www.linkedin.com/in/beleswar-prasad-padhi-2416241bb/'),('envelope','mailto:beleswarprasad@gmail.com'))
