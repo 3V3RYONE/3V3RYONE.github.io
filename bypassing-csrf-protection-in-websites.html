@@ -1,58 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-          <title>INSIGHT - Bypassing CSRF Protection in websites</title>
-        <meta charset="utf-8" />
-        <meta name="generator" content="Pelican" />
-        <link href="https://3v3ryone.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Full Atom Feed" />
-        <link href="https://3v3ryone.github.io/feeds/tech.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Categories Atom Feed" />
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Bypassing CSRF Protection in websites</title>
+
+            <link href="https://3v3ryone.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Full Atom Feed" />
+            <link href="https://3v3ryone.github.io/feeds/{slug}.atom.xml" type="application/atom+xml" rel="alternate" title="INSIGHT Categories Atom Feed" />
+        <!-- Bootstrap Core CSS -->
+        <link href="https://3v3ryone.github.io/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="https://3v3ryone.github.io/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="https://3v3ryone.github.io/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
 
 
+        <meta name="description" content="From Learning about CSRF tokens to bypassing them!">
 
-    <meta name="tags" content="CSRF Tokens" />
-    <meta name="tags" content="Bruteforce Login" />
-    <meta name="tags" content="Extract CSRF Token" />
-    <meta name="tags" content="Bypass Login pages" />
+        <meta name="author" content="Beleswar">
 
+        <meta name="tags" content="CSRF Tokens">
+        <meta name="tags" content="Bruteforce Login">
+        <meta name="tags" content="Extract CSRF Token">
+        <meta name="tags" content="Bypass Login pages">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="INSIGHT">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="https://3v3ryone.github.io/author/beleswar.html">
+	<meta property="og:url" content="https://3v3ryone.github.io/bypassing-csrf-protection-in-websites.html">
+	<meta property="og:title" content="Bypassing CSRF Protection in websites">
+	<meta property="article:published_time" content="2022-01-24 00:00:00+05:30">
+            <meta property="og:description" content="From Learning about CSRF tokens to bypassing them!">
+
+            <meta property="og:image" content="https://3v3ryone.github.io/theme/images/post-bg.jpg">
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="https://3v3ryone.github.io/">INSIGHT <strong>Blog</strong></a></h1>
-        </header><!-- /#banner -->
-        <nav id="menu"><ul>
-            <li><a href="https://3v3ryone.github.io/pages/about.html">About</a></li>
-            <li class="active"><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
-            <li><a href="https://3v3ryone.github.io/category/thoughts.html">THOUGHTS</a></li>
-        </ul></nav><!-- /#menu -->
-<section id="content" class="body">
-  <header>
-    <h2 class="entry-title">
-      <a href="https://3v3ryone.github.io/bypassing-csrf-protection-in-websites.html" rel="bookmark"
-         title="Permalink to Bypassing CSRF Protection in websites">Bypassing CSRF Protection in websites</a></h2>
- 
-  </header>
-  <footer class="post-info">
-    <time class="published" datetime="2022-01-24T00:00:00+05:30">
-      Mon 24 January 2022
-    </time>
-    <address class="vcard author">
-      By           <a class="url fn" href="https://3v3ryone.github.io/author/beleswar.html">Beleswar</a>
-    </address>
-    <div class="category">
-        Category: <a href="https://3v3ryone.github.io/category/tech.html">TECH</a>
-    </div>
-    <div class="tags">
-        Tags:
-            <a href="https://3v3ryone.github.io/tag/csrf-tokens.html">CSRF Tokens</a>
-            <a href="https://3v3ryone.github.io/tag/bruteforce-login.html">Bruteforce Login</a>
-            <a href="https://3v3ryone.github.io/tag/extract-csrf-token.html">Extract CSRF Token</a>
-            <a href="https://3v3ryone.github.io/tag/bypass-login-pages.html">Bypass Login pages</a>
-    </div>
-  </footer><!-- /.post-info -->
-  <div class="entry-content">
-    <p>Hello Everyone! Hope you are doing fine during these insane days.. Ah, Chuck it, we all know nobody is fine, everybody just accepts! But I hope this makes your day somewhat easier :)  </p>
+<body class="article-bypassing-csrf-protection-in-websites">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://3v3ryone.github.io/">INSIGHT</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                            <li><a href="https://3v3ryone.github.io/pages/about.html">About</a></li>
+
+			    <li class="active"><a href="https://3v3ryone.github.io/category/tech.html">TECH</a></li>
+			    <li><a href="https://3v3ryone.github.io/category/thoughts.html">THOUGHTS</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-color: black">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Bypassing CSRF Protection in websites</h1>
+                        <span class="meta">Posted by
+                                <a href="https://3v3ryone.github.io/author/beleswar.html">Beleswar</a>
+                             on Mon 24 January 2022
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+    <!-- Post Content -->
+    <article>
+        <p>Hello Everyone! Hope you are doing fine during these insane days.. Ah, Chuck it, we all know nobody is fine, everybody just accepts! But I hope this makes your day somewhat easier :)  </p>
 <p>So, today's post would cover topics to get you started about <strong>CSRF protections</strong> and a <strong>solid method regarding how you can bypass them!</strong> So, what is CSRF protection? Where do I see it? What purpose does that serve? Let's dive right in!  </p>
 <h2>What is CSRF?</h2>
 <p>CSRF stands for Cross Site Request Forgery. It is basically an attack, where the hacker does malicious actions on a website, by means of an authenticated user that the website trusts. Simply put, it is a malicious request (lets say to change the user's password) made by a hacker in a website, that he doesn't have access to, but through a user which has access to it.  </p>
@@ -124,14 +184,69 @@ username=admin&amp;password=password&amp;Login=Login&amp;user_token=004fc0b9ee58
 Note: You just have to write the <code>GET</code> and <code>POST</code> requests once, the bruteforcer will execute steps 1, 2 and 3 sequentially for every credential and report you the correct one!  </li>
 </ol>
 </blockquote>
-<p>So, I hope this article helped you in some way and made your day easier! I have finished writing the module to bypass this <code>dvwa_login</code> page and I'll link the codes here soon for you to take a reference of how things work exactly! Until next time, take care :)</p>
-  </div><!-- /.entry-content -->
-</section>
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="https://getpelican.com/">Pelican</a>,
-                which takes great advantage of <a href="https://www.python.org/">Python</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+<p>So, I hope this article helped you in some way and made your day easier! I have finished writing the module to bypass this <code>dvwa_login</code> page and I'll link the codes here soon for you to take a reference of how things work exactly! Until then, take care :)</p>
+    </article>
+
+        <div class="tags">
+            <p>tags: <a href="https://3v3ryone.github.io/tag/csrf-tokens.html">CSRF Tokens</a>, <a href="https://3v3ryone.github.io/tag/bruteforce-login.html">Bruteforce Login</a>, <a href="https://3v3ryone.github.io/tag/extract-csrf-token.html">Extract CSRF Token</a>, <a href="https://3v3ryone.github.io/tag/bypass-login-pages.html">Bypass Login pages</a></p>
+        </div>
+
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                            <li>
+                                <a href="https://www.github.com/3V3RYONE">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/beleswar-prasad-padhi-2416241bb/">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="mailto:beleswarprasad@gmail.com">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>. <br />        &copy;  Beleswar
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://3v3ryone.github.io/theme/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="https://3v3ryone.github.io/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="https://3v3ryone.github.io/theme/js/clean-blog.min.js"></script>
+
 </body>
+
 </html>
